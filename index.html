@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#D35400">
+  <meta name="description" content="KALLPA ORIGEN - Energía andina para mentes brillantes. Desayunos saludables y nutritivos para la comunidad universitaria.">
+  <title>KALLPA ORIGEN | Desayunos Universitarios Saludables</title>
+  
+  <style>
+    /* ==========================================================================
+       VARIABLES Y PALETA DE COLORES ANDINA CÁLIDA
+       ========================================================================== */
+    :root {
+      --color-primary: #C84B16;          /* Terracota andino cálido */
+      --color-primary-dark: #9F340A;     /* Arcilla tostada */
+      --color-primary-light: #FBF0EB;    /* Crema suave con tinte terracota */
+      --color-secondary: #E88328;        /* Ocre / Maíz dorado */
+      --color-secondary-light: #FFF6EC;  /* Tinte maíz muy suave */
+      --color-earth-dark: #2B1E17;       /* Tierra profunda / Texto principal */
+      --color-earth-mid: #5A473E;        /* Café suave / Subtítulos */
+      --color-earth-light: #8C786E;      /* Neutro secundario */
+      --color-bg: #FAF7F2;               /* Beige arena cálido natural */
+      --color-surface: #FFFFFF;          /* Blanco puro para tarjetas */
+      --color-border: #EFE7DE;           /* Borde sutil terroso */
+      --color-whatsapp: #25D366;         /* Verde WhatsApp oficial */
+      --color-whatsapp-dark: #1EBE5D;
+      --color-yape: #742284;             /* Acento Yape */
+      --color-plin: #00B1B3;             /* Acento Plin */
+      --color-tag-upcycle: #2D6A4F;      /* Verde sostenible */
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 2px 8px rgba(43, 30, 23, 0.05);
+      --shadow-md: 0 6px 20px rgba(43, 30, 23, 0.08);
+      --shadow-lg: 0 12px 32px rgba(43, 30, 23, 0.12);
+      
+      --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset y base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--color-bg);
+      color: var(--color-earth-dark);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 90px; /* Espacio para barra inferior en móvil */
+    }
+
+    @media (min-width: 992px) {
+      body {
+        padding-bottom: 0;
+      }
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    button, input, textarea, select {
+      font: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      touch-action: manipulation;
+    }
+
+    /* ==========================================================================
+       HEADER & BARRA DE NAVEGACIÓN
+       ========================================================================== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(253, 251, 247, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(200, 75, 22, 0.35);
+      flex-shrink: 0;
+    }
+
+    .brand-text h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--color-primary-dark);
+      line-height: 1.15;
+    }
+
+    .brand-text p {
+      font-size: 0.75rem;
+      color: var(--color-earth-mid);
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .cart-trigger-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--color-primary);
+      color: #fff;
+      padding: 0.65rem 1rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 14px rgba(200, 75, 22, 0.3);
+      transition: transform var(--transition-fast), background-color var(--transition-fast);
+    }
+
+    .cart-trigger-btn:hover {
+      background-color: var(--color-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .cart-trigger-btn:active {
+      transform: scale(0.97);
+    }
+
+    .cart-badge {
+      background-color: #fff;
+      color: var(--color-primary-dark);
+      font-size: 0.75rem;
+      font-weight: 800;
+      min-width: 22px;
+      height: 22px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* ==========================================================================
+       HERO BANNER
+       ========================================================================== */
+    .hero-section {
+      background: linear-gradient(170deg, #F8EFE6 0%, #FAF7F2 100%);
+      padding: 2.5rem 1.25rem 2rem;
+      border-bottom: 1px solid var(--color-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(200, 75, 22, 0.1);
+      color: var(--color-primary-dark);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(200, 75, 22, 0.2);
+    }
+
+    .hero-title {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--color-earth-dark);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      color: var(--color-primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      color: var(--color-earth-mid);
+      max-width: 650px;
+      margin: 0 auto 1.5rem;
+      font-weight: 400;
+    }
+
+    .campus-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .campus-badge-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--color-earth-dark);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .campus-badge-item svg {
+      color: var(--color-primary);
+    }
+
+    /* ==========================================================================
+       CONTENEDOR PRINCIPAL Y FILTROS POR CATEGORÍA
+       ========================================================================== */
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem;
+      width: 100%;
+    }
+
+    .catalog-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .catalog-title-group h2 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--color-earth-dark);
+    }
+
+    .catalog-title-group p {
+      font-size: 0.95rem;
+      color: var(--color-earth-mid);
+    }
+
+    /* Pestañas de categorías estilo "chips" */
+    .category-tabs {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .category-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.15rem;
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-earth-mid);
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-btn:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .tab-btn.active {
+      background-color: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 12px rgba(200, 75, 22, 0.28);
+    }
+
+    /* ==========================================================================
+       CATÁLOGO DE PRODUCTOS (GRID RESPONSIVE)
+       ========================================================================== */
+    .products-section {
+      margin-bottom: 3rem;
+    }
+
+    .category-section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--color-earth-dark);
+      margin: 1.75rem 0 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .category-section-title svg {
+      color: var(--color-primary);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 580px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    /* Tarjeta de Producto */
+    .product-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(200, 75, 22, 0.3);
+    }
+
+    .product-badge-corner {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      border: 1px solid rgba(200, 75, 22, 0.2);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .product-badge-corner.upcycled {
+      background: rgba(45, 106, 79, 0.95);
+      color: #fff;
+      border: none;
+    }
+
+    .product-illustration {
+      width: 100%;
+      height: 165px;
+      background: linear-gradient(135deg, #FBEFE8 0%, #FFF8F2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card.upcycle-card .product-illustration {
+      background: linear-gradient(135deg, #EAF4EE 0%, #F5FBF7 100%);
+    }
+
+    .illustration-icon {
+      width: 82px;
+      height: 82px;
+      transition: transform var(--transition-normal);
+      filter: drop-shadow(0 6px 12px rgba(43, 30, 23, 0.1));
+    }
+
+    .product-card:hover .illustration-icon {
+      transform: scale(1.08) rotate(-2deg);
+    }
+
+    .product-info {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--color-earth-dark);
+      margin-bottom: 0.35rem;
+      line-height: 1.3;
+    }
+
+    .product-desc {
+      font-size: 0.84rem;
+      color: var(--color-earth-mid);
+      margin-bottom: 1.1rem;
+      line-height: 1.45;
+      flex-grow: 1;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--color-border);
+      margin-top: auto;
+    }
+
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--color-primary-dark);
+      white-space: nowrap;
+    }
+
+    .product-price small {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-earth-light);
+      margin-right: 2px;
+    }
+
+    /* Controles de botón / contador */
+    .btn-add {
+      background-color: var(--color-primary-light);
+      color: var(--color-primary);
+      border: 1px solid rgba(200, 75, 22, 0.25);
+      padding: 0.55rem 0.95rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all var(--transition-fast);
+      min-height: 42px;
+    }
+
+    .btn-add:hover {
+      background-color: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      padding: 2px;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .qty-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background-color: #fff;
+      color: var(--color-earth-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.05rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: all var(--transition-fast);
+    }
+
+    .qty-btn:active {
+      transform: scale(0.92);
+      background-color: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+
+    .qty-number {
+      font-weight: 800;
+      font-size: 0.95rem;
+      min-width: 30px;
+      text-align: center;
+      color: var(--color-earth-dark);
+    }
+
+    /* ==========================================================================
+       PANEL LATERAL / DRAWER DEL CARRITO
+       ========================================================================== */
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(43, 30, 23, 0.55);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition-normal), visibility var(--transition-normal);
+    }
+
+    .cart-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 460px;
+      height: 100%;
+      background-color: var(--color-surface);
+      z-index: 1001;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cart-overlay.open .cart-drawer {
+      transform: translateX(0);
+    }
+
+    .cart-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--color-bg);
+    }
+
+    .cart-header-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .cart-header-title h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--color-earth-dark);
+    }
+
+    .cart-close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      background-color: #fff;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-earth-mid);
+      transition: all var(--transition-fast);
+    }
+
+    .cart-close-btn:hover {
+      background-color: #f1ebe5;
+      color: var(--color-earth-dark);
+    }
+
+    .cart-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Estado vacío */
+    .cart-empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin: auto 0;
+      color: var(--color-earth-mid);
+    }
+
+    .cart-empty-state svg {
+      width: 72px;
+      height: 72px;
+      color: var(--color-earth-light);
+      margin-bottom: 1.2rem;
+      opacity: 0.6;
+    }
+
+    .cart-empty-state h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-earth-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .cart-empty-state p {
+      font-size: 0.9rem;
+      max-width: 260px;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-explore-menu {
+      background-color: var(--color-primary);
+      color: #fff;
+      padding: 0.65rem 1.4rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* Ítems del carrito */
+    .cart-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.85rem;
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+    }
+
+    .cart-item-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cart-item-title {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--color-earth-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cart-item-unit-price {
+      font-size: 0.78rem;
+      color: var(--color-earth-light);
+      margin-bottom: 0.2rem;
+    }
+
+    .cart-item-subtotal {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+    }
+
+    .cart-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cart-mini-qty {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      padding: 2px;
+    }
+
+    .cart-mini-btn {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      border-radius: var(--radius-full);
+      background: transparent;
+      color: var(--color-earth-dark);
+    }
+
+    .cart-mini-btn:hover {
+      background-color: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+
+    .cart-mini-num {
+      min-width: 22px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .cart-item-remove-btn {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-earth-light);
+      border-radius: var(--radius-full);
+      transition: color var(--transition-fast), background-color var(--transition-fast);
+    }
+
+    .cart-item-remove-btn:hover {
+      color: #D32F2F;
+      background-color: #FFEBEE;
+    }
+
+    /* Formulario de Checkout en el Carrito */
+    .checkout-form-container {
+      background-color: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .form-section-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--color-earth-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .form-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-earth-mid);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .form-label .req {
+      color: var(--color-primary);
+      font-weight: 800;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      background-color: var(--color-bg);
+      color: var(--color-earth-dark);
+      transition: border-color var(--transition-fast), background-color var(--transition-fast);
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      background-color: #fff;
+    }
+
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: #A89B93;
+      font-size: 0.82rem;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 55px;
+    }
+
+    /* Sugerencias rápidas de lugar */
+    .quick-places {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.25rem;
+    }
+
+    .quick-place-chip {
+      background: #f0ebe4;
+      border: 1px solid var(--color-border);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+      color: var(--color-earth-mid);
+    }
+
+    .quick-place-chip:hover {
+      background: var(--color-primary-light);
+      color: var(--color-primary-dark);
+    }
+
+    /* Caja de Pago Yape / Plin Informativa */
+    .payment-notice-box {
+      background: linear-gradient(135deg, rgba(116, 34, 132, 0.08), rgba(0, 177, 179, 0.08));
+      border: 1px solid rgba(116, 34, 132, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    .payment-notice-box strong {
+      color: var(--color-earth-dark);
+    }
+
+    .payment-badges-row {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.3rem;
+    }
+
+    .pay-badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    .pay-badge.yape { background-color: var(--color-yape); }
+    .pay-badge.plin { background-color: var(--color-plin); }
+
+    /* Footer del carrito con montos y botón WhatsApp */
+    .cart-footer {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--color-border);
+      background-color: var(--color-bg);
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.04);
+    }
+
+    .cart-summary-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+      font-size: 0.86rem;
+      color: var(--color-earth-mid);
+    }
+
+    .cart-summary-line.total-line {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--color-earth-dark);
+      padding-top: 0.5rem;
+      border-top: 1px dashed var(--color-border);
+      margin-top: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .cart-summary-line.total-line .total-val {
+      color: var(--color-primary-dark);
+      font-size: 1.35rem;
+    }
+
+    .btn-checkout-whatsapp {
+      width: 100%;
+      background-color: var(--color-whatsapp);
+      color: #fff;
+      padding: 0.95rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+      transition: all var(--transition-fast);
+      min-height: 52px;
+    }
+
+    .btn-checkout-whatsapp:hover {
+      background-color: var(--color-whatsapp-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+    }
+
+    .btn-checkout-whatsapp:active {
+      transform: scale(0.98);
+    }
+
+    .btn-checkout-whatsapp:disabled {
+      background-color: #C8BFB8;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ==========================================================================
+       BARRA FIJA FLOTANTE INFERIOR (MOBILE-FIRST)
+       ========================================================================== */
+    .mobile-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--color-border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      z-index: 90;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+    }
+
+    @media (min-width: 992px) {
+      .mobile-sticky-bar {
+        display: none;
+      }
+    }
+
+    .sticky-bar-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sticky-bar-count {
+      font-size: 0.75rem;
+      color: var(--color-earth-mid);
+      font-weight: 600;
+    }
+
+    .sticky-bar-price {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--color-primary-dark);
+    }
+
+    .sticky-bar-btn {
+      background-color: var(--color-primary);
+      color: #fff;
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 14px rgba(200, 75, 22, 0.35);
+    }
+
+    /* ==========================================================================
+       MODAL DE CONFIRMACIÓN / REDIRECCIÓN
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(43, 30, 23, 0.65);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-normal);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background-color: #fff;
+      border-radius: var(--radius-lg);
+      max-width: 440px;
+      width: 100%;
+      padding: 2rem 1.75rem;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-overlay.open .modal-card {
+      transform: scale(1);
+    }
+
+    .modal-success-icon {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+      color: #2E7D32;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      animation: pulseSuccess 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseSuccess {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.2); }
+      50% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(46, 125, 50, 0); }
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--color-earth-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-msg {
+      font-size: 0.95rem;
+      color: var(--color-earth-mid);
+      margin-bottom: 1.5rem;
+      line-height: 1.45;
+    }
+
+    .modal-summary-box {
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: left;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .modal-btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background-color: var(--color-whatsapp);
+      color: #fff;
+      font-weight: 700;
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+      margin-bottom: 0.6rem;
+    }
+
+    .modal-btn-close {
+      color: var(--color-earth-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.4rem;
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 3000;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .toast {
+      background-color: var(--color-earth-dark);
+      color: #fff;
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all var(--transition-normal);
+      pointer-events: auto;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #231711;
+      color: #E2D9D2;
+      padding: 2.5rem 1.25rem 2rem;
+      margin-top: auto;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-slogan {
+      font-size: 0.88rem;
+      color: var(--color-secondary);
+      font-weight: 600;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: #A0948D;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER
+       ========================================================================== -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#" class="brand-logo" title="KALLPA ORIGEN - Inicio">
+        <div class="logo-badge">
+          <!-- Icono Sol Andino SVG -->
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>KALLPA ORIGEN</h1>
+          <p>Energía andina para mentes brillantes</p>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <button class="cart-trigger-btn" id="openCartBtn" aria-label="Abrir carrito de compras">
+          <!-- Icono Carrito SVG -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+          </svg>
+          <span>Pedido</span>
+          <span class="cart-badge" id="headerCartBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO BANNER
+       ========================================================================== -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-pill">
+        <span>☀️</span> Desayunos Universitarios Saludables
+      </div>
+      <h2 class="hero-title">
+        Despierta tu potencial con <span>KALLPA ORIGEN</span>
+      </h2>
+      <p class="hero-subtitle">
+        Nutrición andina rápida, deliciosa y balanceada para rendir al 100% en clases y exámenes. ¡Te lo llevamos a tu pabellón, aula u oficina!
+      </p>
+      <div class="campus-badges">
+        <div class="campus-badge-item">
+          <!-- Icono Rayo SVG -->
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          100% Granos Andinos
+        </div>
+        <div class="campus-badge-item">
+          <!-- Icono Pin Ubicación SVG -->
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          Entrega en Campus
+        </div>
+        <div class="campus-badge-item">
+          <!-- Icono Celular / Pago SVG -->
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+            <path d="M12 18h.01"></path>
+          </svg>
+          Yape / Plin al instante
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CATÁLOGO PRINCIPAL
+       ========================================================================== -->
+  <main class="main-container">
+    <div class="catalog-header">
+      <div class="catalog-title-group">
+        <h2>Nuestro Menú Universitario</h2>
+        <p>Elige tu bebida nutritiva y acompaña con tus panes o tamales favoritos.</p>
+      </div>
+
+      <!-- Filtros por Categoría -->
+      <div class="category-tabs" role="tablist">
+        <button class="tab-btn active" data-category="all" role="tab" aria-selected="true">
+          <span>🍽️</span> Todos
+        </button>
+        <button class="tab-btn" data-category="bebidas" role="tab" aria-selected="false">
+          <span>🥤</span> Bebidas Andinas
+        </button>
+        <button class="tab-btn" data-category="solidos" role="tab" aria-selected="false">
+          <span>🥪</span> Sólidos & Panes
+        </button>
+        <button class="tab-btn" data-category="upcycled" role="tab" aria-selected="false">
+          <span>✨</span> Especialidad Upcycled
+        </button>
+      </div>
+    </div>
+
+    <!-- SECCIÓN: BEBIDAS -->
+    <section class="products-section" id="section-bebidas" data-cat-section="bebidas">
+      <h3 class="category-section-title">
+        <!-- SVG Taza humeante -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+          <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+          <line x1="6" y1="2" x2="6" y2="4"></line>
+          <line x1="10" y1="2" x2="10" y2="4"></line>
+          <line x1="14" y1="2" x2="14" y2="4"></line>
+        </svg>
+        Bebidas Andinas Reconfortantes
+      </h3>
+      <div class="products-grid" id="grid-bebidas">
+        <!-- Generado por JS -->
+      </div>
+    </section>
+
+    <!-- SECCIÓN: SÓLIDOS Y PANES -->
+    <section class="products-section" id="section-solidos" data-cat-section="solidos">
+      <h3 class="category-section-title">
+        <!-- SVG Sandwich / Pan -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3 11 18-5v12L3 14v-3z"></path>
+          <path d="M11.5 6.5v11"></path>
+        </svg>
+        Sólidos & Panes Clásicos
+      </h3>
+      <div class="products-grid" id="grid-solidos">
+        <!-- Generado por JS -->
+      </div>
+    </section>
+
+    <!-- SECCIÓN: ESPECIALIDAD UPCYCLED -->
+    <section class="products-section" id="section-upcycled" data-cat-section="upcycled">
+      <h3 class="category-section-title">
+        <!-- SVG Hoja / Estrella Upcycled -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v4"></path>
+          <path d="m4.93 4.93 2.83 2.83"></path>
+          <path d="M2 12h4"></path>
+          <path d="m4.93 19.07 2.83-2.83"></path>
+          <path d="M12 22v-4"></path>
+          <path d="m19.07 19.07-2.83-2.83"></path>
+          <path d="M22 12h-4"></path>
+          <path d="m19.07 4.93-2.83 2.83"></path>
+        </svg>
+        Especialidad Sostenible: Panetón Upcycled
+      </h3>
+      <div class="products-grid" id="grid-upcycled">
+        <!-- Generado por JS -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       PANEL LATERAL / DRAWER DEL CARRITO & FORMULARIO
+       ========================================================================== -->
+  <div class="cart-overlay" id="cartOverlay">
+    <aside class="cart-drawer" aria-labelledby="cartTitle">
+      <div class="cart-header">
+        <div class="cart-header-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+          </svg>
+          <h3 id="cartTitle">Tu Desayuno Andino</h3>
+        </div>
+        <button class="cart-close-btn" id="closeCartBtn" aria-label="Cerrar carrito">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="cart-body" id="cartBody">
+        <!-- Lista de productos cargada dinámicamente -->
+        <div id="cartItemsContainer" class="cart-items-list"></div>
+
+        <!-- Formulario de Entrega Universitario -->
+        <div class="checkout-form-container" id="checkoutFormSection">
+          <div class="form-section-title">
+            <!-- Icono Pin -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            Datos de Entrega en Campus
+          </div>
+
+          <div class="form-group">
+            <label for="clientName" class="form-label">
+              <span>👤</span> Nombre Completo <span class="req">*</span>
+            </label>
+            <input type="text" id="clientName" class="form-input" placeholder="Ej. Camila Morales o Prof. Vega" required autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label for="deliveryLocation" class="form-label">
+              <span>📍</span> Lugar de Entrega <span class="req">*</span>
+            </label>
+            <input type="text" id="deliveryLocation" class="form-input" placeholder="Ej. Pabellón B - Aula 304, Oficina Admisiones..." required>
+            <div class="quick-places">
+              <button type="button" class="quick-place-chip" onclick="setPlace('Pabellón A')">Pabellón A</button>
+              <button type="button" class="quick-place-chip" onclick="setPlace('Pabellón B')">Pabellón B</button>
+              <button type="button" class="quick-place-chip" onclick="setPlace('Biblioteca')">Biblioteca</button>
+              <button type="button" class="quick-place-chip" onclick="setPlace('Sala de Profesores')">Sala Profesores</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="orderNotes" class="form-label">
+              <span>📝</span> Indicaciones Adicionales (Opcional)
+            </label>
+            <textarea id="orderNotes" class="form-textarea" rows="2" placeholder="Ej. Sin azúcar, con sarsa criolla aparte, llevar servilletas..."></textarea>
+          </div>
+
+          <div class="payment-notice-box">
+            <span>💡</span>
+            <div>
+              <strong>Pago Rápido al enviar por WhatsApp:</strong>
+              <div>Aceptamos Yape y Plin (+51 999 999 999). Adjunta tu captura luego de presionar el botón.</div>
+              <div class="payment-badges-row">
+                <span class="pay-badge yape">Yape</span>
+                <span class="pay-badge plin">Plin</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-summary-line">
+          <span>Subtotal productos:</span>
+          <span id="cartSubtotalText">S/ 0.00</span>
+        </div>
+        <div class="cart-summary-line">
+          <span>Entrega en campus:</span>
+          <span style="color: #2E7D32; font-weight: 700;">¡GRATIS!</span>
+        </div>
+        <div class="cart-summary-line total-line">
+          <span>Total a pagar:</span>
+          <span class="total-val" id="cartTotalText">S/ 0.00</span>
+        </div>
+
+        <button type="button" class="btn-checkout-whatsapp" id="sendWhatsAppBtn">
+          <!-- Icono WhatsApp SVG -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.17 8.17 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.44 0-2.85-.38-4.09-1.11l-.29-.17-3.05.8 0.81-2.97-.19-.3a8.136 8.136 0 0 1-1.25-4.48c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.59c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.24-.75-.67-1.26-1.49-1.41-1.74-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1 0.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.18-.47-.3z"/>
+          </svg>
+          Confirmar y Enviar Pedido
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ==========================================================================
+       BARRA FIJA INFERIOR (DISPOSITIVOS MÓVILES)
+       ========================================================================== -->
+  <div class="mobile-sticky-bar" id="mobileStickyBar">
+    <div class="sticky-bar-info">
+      <span class="sticky-bar-count" id="stickyCount">0 productos seleccionados</span>
+      <span class="sticky-bar-price" id="stickyPrice">S/ 0.00</span>
+    </div>
+    <button class="sticky-bar-btn" id="stickyCartBtn" onclick="openCart()">
+      <!-- Carrito SVG -->
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="8" cy="21" r="1"></circle>
+        <circle cx="19" cy="21" r="1"></circle>
+        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+      </svg>
+      Ver Pedido
+    </button>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL DE CONFIRMACIÓN / ÉXITO TEMPORAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-card">
+      <div class="modal-success-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h3 class="modal-title">¡Redirigiendo a WhatsApp para confirmar tu pago!</h3>
+      <p class="modal-msg">
+        Tu pedido ha sido armado con éxito. Se abrirá la conversación con <strong>KALLPA ORIGEN</strong> con todos los detalles listos.
+      </p>
+
+      <div class="modal-summary-box" id="modalSummaryContent">
+        <!-- Resumen inyectado por JS -->
+      </div>
+
+      <a href="#" id="modalDirectLink" class="modal-btn-action" target="_blank" rel="noopener noreferrer">
+        <!-- WhatsApp SVG -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.17 8.17 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.44 0-2.85-.38-4.09-1.11l-.29-.17-3.05.8 0.81-2.97-.19-.3a8.136 8.136 0 0 1-1.25-4.48c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.59c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.24-.75-.67-1.26-1.49-1.41-1.74-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1 0.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.18-.47-.3z"/>
+        </svg>
+        Abrir WhatsApp Ahora
+      </a>
+      
+      <button type="button" class="modal-btn-close" onclick="closeSuccessModal()">
+        Cerrar ventana
+      </button>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICACIÓN -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">☀️ KALLPA ORIGEN</div>
+      <div class="footer-slogan">"Energía andina para mentes brillantes"</div>
+      <p class="footer-copy">
+        Desayunos andinos preparados con amor para estudiantes, docentes y personal universitario. © <span id="currentYear"></span> KALLPA ORIGEN. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT (LÓGICA DE NEGOCIO, CARRITO Y WHATSAPP)
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       1. CATÁLOGO DE PRODUCTOS (DATOS)
+       ========================================================================== */
+    const WHATSAPP_PHONE = "51999999999"; // Número de WhatsApp oficial
+
+    const PRODUCTS = [
+      // BEBIDAS
+      {
+        id: "beb-quinoa",
+        name: "Quinoa Carretillera Nutritiva",
+        category: "bebidas",
+        price: 3.50,
+        badge: "Superalimento",
+        desc: "Bebida caliente de quinoa perlada cocida con trozos de manzana, membrillo aromático y un toque de canela y clavo.",
+        iconSvg: `
+          <svg viewBox="0 0 100 100" class="illustration-icon">
+            <circle cx="50" cy="50" r="44" fill="#FDF2E9"/>
+            <path d="M30 40 L35 78 A15 15 0 0 0 65 78 L70 40 Z" fill="#D35400"/>
+            <ellipse cx="50" cy="40" rx="20" ry="6" fill="#E67E22"/>
+            <path d="M70 48 C78 48 82 54 82 60 C82 68 74 70 67 70" fill="none" stroke="#D35400" stroke-width="5" stroke-linecap="round"/>
+            <path d="M42 22 Q40 28 44 32" stroke="#E67E22" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M50 18 Q48 25 52 30" stroke="#E67E22" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M58 22 Q56 28 60 32" stroke="#E67E22" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+        `
+      },
+      {
+        id: "beb-maca",
+        name: "Maca Andina Energética",
+        category: "bebidas",
+        price: 4.00,
+        badge: "Energía Pura",
+        desc: "Maca pura de los Andes de Junín, emulsionada con leche vegetal, miel de abeja y canela para potenciar la memoria y concentración.",
+        iconSvg: `
+          <svg viewBox="0 0 100 100" class="illustration-icon">
+            <circle cx="50" cy="50" r="44" fill="#FDF6EB"/>
+            <path d="M30 42 L35 80 A15 15 0 0 0 65 80 L70 42 Z" fill="#9C640C"/>
+            <ellipse cx="50" cy="42" rx="20" ry="6" fill="#B7791F"/>
+            <path d="M70 49 C78 49 82 55 82 61 C82 69 74 71 67 71" fill="none" stroke="#9C640C" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="50" cy="58" r="8" fill="#F6E05E" opacity="0.9"/>
+            <path d="M50 20 L50 32 M45 24 L55 24" stroke="#B7791F" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        `
+      },
+      {
+        id: "beb-avena",
+        name: "Avena Cremosa con Manzana",
+        category: "bebidas",
+        price: 3.50,
+        badge: "Fibra & Digestión",
+        desc: "Avena en hojuelas cocinada a fuego lento con fruta fresca picada, canela de chanchamayo y cáscara de naranja.",
+        iconSvg: `
+          <svg viewBox="0 0 100 100" class="illustration-icon">
+            <circle cx="50" cy="50" r="44" fill="#FFF9ED"/>
+            <path d="M30 42 L35 80 A15 15 0 0 0 65 80 L70 42 Z" fill="#C05621"/>
+            <ellipse cx="50" cy="42" rx="20" ry="6" fill="#DD6B20"/>
+            <path d="M70 49 C78 49 82 55 82 61 C82 69 74 71 67 71" fill="none" stroke="#C05621" stroke-width="5" stroke-linecap="round"/>
+            <path d="M46 58 Q50 64 54 58" stroke="#FFF" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+        `
+      },
+
+      // SÓLIDOS & PANES
+      {
+        id: "sol-pollo",
+        name: "Pan Clásico con Pollo",
+        category: "solidos",
+        price: 4.50,
+        badge: "Favorito Universitario",
+        desc: "Pan crujiente relleno con jugosa pechuga de pollo deshilachada, apio fresco crocante y crema suave ligera de la casa.",
+        iconSvg: `
+          <svg viewBox="0 0 100 100" class="illustration-icon">
+            <circle cx="50" cy="50" r="44" fill="#FDF2E9"/>
+            <ellipse cx="50" cy="42" rx="36" ry="16" fill="#D97706"/>
+            <path d="M16 48 Q50 44 84 48 L80 62 Q50 68 20 62 Z" fill="#F59E0B"/>
+            <path d="M20 54 Q50 51 80 54" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
+            <path d="M24 58 Q50 55 76 58" stroke="#EF4444" stroke-width="3" stroke-linecap="round"/>
+            <ellipse cx="50" cy="64" rx="34" ry="14" fill="#B45309"/>
+          </svg>
+        `
+      },
+      {
+        id: "sol-lomo",
+        name: "Pan con Lomo al Jugo",
+        category: "solidos",
+        price: 6.50,
+        badge: "Poder Proteico",
+        desc: "Trozos selectos de carne flambeada al momento con cebolla morada crocante, tomate jugoso y un toque de culantro fresco.",
+        iconSvg: `
+          <svg viewBox="0 0 100 100" class="illustration-icon">
+            <circle cx="50" cy="50" r="44" fill="#FFF5F0"/>
+            <ellipse cx="50" cy="40" rx="36" ry="16" fill="#B45309"/>
+            <rect x="20" y="46" width="60" height="14" rx="4" fill="#78350F"/>
+            <path d="M22 52 Q35 48 50 52 Q65 48 78 52" stroke="#EF4444" stroke-width="4"/>
+            <path d="M26 56 Q50 53 74 56" stroke="#8B5CF6" stroke-width="3"/>
+            <ellipse cx="50" cy="62" rx="34" ry="14" fill="#92400E"/>
+          </svg>
+        `
+      },
+      {
+        id: "sol-huevo",
+        name: "Pan con Huevo Revuelto / Frito",
+        category: "solidos",
+        price: 3.50,
+        badge: "Clásico del Día",
+        desc: "Huevos de granja frescos batidos o fritos con yema tierna, servidos calientes en pan campesino recién horneado.",
+        iconSvg: `
+          <svg viewBox="0 0 100 100" class="illustration-icon">
+            <circle cx="50" cy="50" r="44" fill="#FFFBEB"/>
+            <ellipse cx="50" cy="40" rx="35" ry="15" fill="#D97706"/>
+            <ellipse cx="50" cy="52" rx="28" ry="10" fill="#FEF3C7"/>
+            <circle cx="50" cy="51" r="9" fill="#F59E0B"/>
+            <ellipse cx="50" cy="62" rx="33" ry="13" fill="#B45309"/>
+          </svg>
+        `
+      },
+      {
+        id: "sol-tamal",
+        name: "Tamal Criollo Tradicional",
+        category: "solidos",
+        price: 5.00,
+        badge: "Sabor Criollo",
+        desc: "Masa suave de maíz amarillo aromatizada con ají panca, relleno de pechuga de pollo, huevo duro, aceituna y sarsa criolla.",
+        iconSvg: `
+          <svg viewBox="0 0 100 100" class="illustration-icon">
+            <circle cx="50" cy="50" r="44" fill="#F0FDF4"/>
+            <polygon points="26,35 74,35 66,75 34,75" fill="#15803D"/>
+            <polygon points="30,38 70,38 63,72 37,72" fill="#16A34A"/>
+            <line x1="50" y1="35" x2="50" y2="75" stroke="#FDE047" stroke-width="3"/>
+            <line x1="28" y1="54" x2="72" y2="54" stroke="#FDE047" stroke-width="3"/>
+            <circle cx="50" cy="54" r="5" fill="#DC2626"/>
+          </svg>
+        `
+      },
+
+      // ESPECIALIDAD UPCYCLED
+      {
+        id: "upc-paneton",
+        name: "Panetón Artesanal Upcycled (Porción)",
+        category: "upcycled",
+        price: 5.50,
+        badge: "♻️ Especialidad Sostenible",
+        desc: "Nuestra creación estrella: delicioso panetón suave y esponjoso elaborado aprovechando bagazos de frutos andinos y harinas nativas ricas en fibra.",
+        iconSvg: `
+          <svg viewBox="0 0 100 100" class="illustration-icon">
+            <circle cx="50" cy="50" r="44" fill="#EBF7EE"/>
+            <path d="M30 46 Q50 20 70 46 L65 80 L35 80 Z" fill="#92400E"/>
+            <ellipse cx="50" cy="46" rx="20" ry="8" fill="#B45309"/>
+            <circle cx="44" cy="42" r="3" fill="#EF4444"/>
+            <circle cx="56" cy="44" r="3" fill="#10B981"/>
+            <circle cx="50" cy="56" r="3" fill="#F59E0B"/>
+            <circle cx="42" cy="66" r="3" fill="#10B981"/>
+            <circle cx="58" cy="68" r="3" fill="#EF4444"/>
+            <!-- Sello Upcycle -->
+            <circle cx="72" cy="30" r="14" fill="#2D6A4F"/>
+            <path d="M68 28 L72 24 L76 28 M72 25 L72 35" stroke="#FFF" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        `
+      }
+    ];
+
+    /* ==========================================================================
+       2. ESTADO DE LA APLICACIÓN (CARRITO)
+       ========================================================================== */
+    let cart = {}; // Estructura: { [productId]: cantidad }
+
+    // Intentar recuperar de sessionStorage si existe
+    try {
+      const savedCart = sessionStorage.getItem("kallpa_cart");
+      if (savedCart) {
+        cart = JSON.parse(savedCart);
+      }
+    } catch (e) {
+      console.warn("Storage no disponible", e);
+    }
+
+    function saveCartState() {
+      try {
+        sessionStorage.setItem("kallpa_cart", JSON.stringify(cart));
+      } catch (e) {}
+    }
+
+    /* ==========================================================================
+       3. RENDERIZADO DEL CATÁLOGO
+       ========================================================================== */
+    function renderCatalog() {
+      const gridBebidas = document.getElementById("grid-bebidas");
+      const gridSolidos = document.getElementById("grid-solidos");
+      const gridUpcycled = document.getElementById("grid-upcycled");
+
+      gridBebidas.innerHTML = "";
+      gridSolidos.innerHTML = "";
+      gridUpcycled.innerHTML = "";
+
+      PRODUCTS.forEach(product => {
+        const card = createProductCardElement(product);
+        if (product.category === "bebidas") {
+          gridBebidas.appendChild(card);
+        } else if (product.category === "solidos") {
+          gridSolidos.appendChild(card);
+        } else if (product.category === "upcycled") {
+          gridUpcycled.appendChild(card);
+        }
+      });
+    }
+
+    function createProductCardElement(product) {
+      const qty = cart[product.id] || 0;
+      const isUpcycle = product.category === "upcycled";
+
+      const card = document.createElement("article");
+      card.className = `product-card ${isUpcycle ? "upcycle-card" : ""}`;
+      card.id = `card-${product.id}`;
+
+      card.innerHTML = `
+        <div class="product-badge-corner ${isUpcycle ? "upcycled" : ""}">
+          ${product.badge}
+        </div>
+        <div class="product-illustration">
+          ${product.iconSvg}
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">${product.name}</h4>
+          <p class="product-desc">${product.desc}</p>
+          <div class="product-footer">
+            <div class="product-price">
+              <small>S/</small>${product.price.toFixed(2)}
+            </div>
+            <div class="product-action" id="action-container-${product.id}">
+              ${renderProductActionButton(product.id, qty)}
+            </div>
+          </div>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function renderProductActionButton(productId, qty) {
+      if (qty > 0) {
+        return `
+          <div class="qty-control">
+            <button type="button" class="qty-btn" onclick="updateItemQuantity('${productId}', -1)" aria-label="Restar una unidad">
+              −
+            </button>
+            <span class="qty-number" aria-live="polite">${qty}</span>
+            <button type="button" class="qty-btn" onclick="updateItemQuantity('${productId}', 1)" aria-label="Añadir una unidad">
+              +
+            </button>
+          </div>
+        `;
+      } else {
+        return `
+          <button type="button" class="btn-add" onclick="updateItemQuantity('${productId}', 1)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Añadir
+          </button>
+        `;
+      }
+    }
+
+    /* ==========================================================================
+       4. GESTIÓN DEL CARRITO DE COMPRAS
+       ========================================================================== */
+    function updateItemQuantity(productId, delta) {
+      const currentQty = cart[productId] || 0;
+      const newQty = currentQty + delta;
+
+      if (newQty <= 0) {
+        delete cart[productId];
+      } else {
+        cart[productId] = newQty;
+      }
+
+      saveCartState();
+
+      // Actualizar el control del producto en la tarjeta del catálogo
+      const actionContainer = document.getElementById(`action-container-${productId}`);
+      if (actionContainer) {
+        actionContainer.innerHTML = renderProductActionButton(productId, cart[productId] || 0);
+      }
+
+      updateCartUI();
+
+      // Si se añade por primera vez, dar feedback
+      if (delta > 0 && currentQty === 0) {
+        const prod = PRODUCTS.find(p => p.id === productId);
+        showToast(`Agregaste "${prod ? prod.name : 'producto'}" a tu pedido`);
+      }
+    }
+
+    function removeItemFromCart(productId) {
+      delete cart[productId];
+      saveCartState();
+
+      const actionContainer = document.getElementById(`action-container-${productId}`);
+      if (actionContainer) {
+        actionContainer.innerHTML = renderProductActionButton(productId, 0);
+      }
+
+      updateCartUI();
+      showToast("Producto eliminado del pedido");
+    }
+
+    function calculateTotals() {
+      let totalCount = 0;
+      let totalPrice = 0;
+
+      for (const [id, qty] of Object.entries(cart)) {
+        const product = PRODUCTS.find(p => p.id === id);
+        if (product && qty > 0) {
+          totalCount += qty;
+          totalPrice += product.price * qty;
+        }
+      }
+
+      return { totalCount, totalPrice };
+    }
+
+    function updateCartUI() {
+      const { totalCount, totalPrice } = calculateTotals();
+
+      // Actualizar Badge en el Header
+      const headerCartBadge = document.getElementById("headerCartBadge");
+      if (headerCartBadge) {
+        headerCartBadge.textContent = totalCount;
+        headerCartBadge.style.display = totalCount > 0 ? "inline-flex" : "none";
+      }
+
+      // Actualizar Barra fija inferior (Móvil)
+      const stickyCount = document.getElementById("stickyCount");
+      const stickyPrice = document.getElementById("stickyPrice");
+      const mobileStickyBar = document.getElementById("mobileStickyBar");
+
+      if (stickyCount) stickyCount.textContent = `${totalCount} ${totalCount === 1 ? 'producto' : 'productos'}`;
+      if (stickyPrice) stickyPrice.textContent = `S/ ${totalPrice.toFixed(2)}`;
+
+      // Totales en el Drawer del carrito
+      const cartSubtotalText = document.getElementById("cartSubtotalText");
+      const cartTotalText = document.getElementById("cartTotalText");
+      if (cartSubtotalText) cartSubtotalText.textContent = `S/ ${totalPrice.toFixed(2)}`;
+      if (cartTotalText) cartTotalText.textContent = `S/ ${totalPrice.toFixed(2)}`;
+
+      // Habilitar o deshabilitar botón de WhatsApp
+      const sendWhatsAppBtn = document.getElementById("sendWhatsAppBtn");
+      if (sendWhatsAppBtn) {
+        sendWhatsAppBtn.disabled = totalCount === 0;
+      }
+
+      // Renderizar la lista de productos en el Drawer
+      renderCartDrawerItems();
+    }
+
+    function renderCartDrawerItems() {
+      const container = document.getElementById("cartItemsContainer");
+      const formSection = document.getElementById("checkoutFormSection");
+      const { totalCount } = calculateTotals();
+
+      if (!container) return;
+
+      if (totalCount === 0) {
+        container.innerHTML = `
+          <div class="cart-empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="8" cy="21" r="1"></circle>
+              <circle cx="19" cy="21" r="1"></circle>
+              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+            </svg>
+            <h4>Tu carrito está vacío</h4>
+            <p>Elige tu bebida andina o panes clásicos para activar tu energía.</p>
+            <button type="button" class="btn-explore-menu" onclick="closeCart()">Ver Menú</button>
+          </div>
+        `;
+        if (formSection) formSection.style.display = "none";
+        return;
+      }
+
+      if (formSection) formSection.style.display = "flex";
+
+      let html = "";
+      for (const [id, qty] of Object.entries(cart)) {
+        const product = PRODUCTS.find(p => p.id === id);
+        if (!product || qty <= 0) continue;
+
+        const subtotal = product.price * qty;
+
+        html += `
+          <div class="cart-item">
+            <div class="cart-item-details">
+              <div class="cart-item-title">${product.name}</div>
+              <div class="cart-item-unit-price">S/ ${product.price.toFixed(2)} c/u</div>
+              <div class="cart-item-subtotal">Subtotal: S/ ${subtotal.toFixed(2)}</div>
+            </div>
+            <div class="cart-item-actions">
+              <div class="cart-mini-qty">
+                <button type="button" class="cart-mini-btn" onclick="updateItemQuantity('${product.id}', -1)" aria-label="Restar uno">
+                  −
+                </button>
+                <span class="cart-mini-num">${qty}</span>
+                <button type="button" class="cart-mini-btn" onclick="updateItemQuantity('${product.id}', 1)" aria-label="Añadir uno">
+                  +
+                </button>
+              </div>
+              <button type="button" class="cart-item-remove-btn" onclick="removeItemFromCart('${product.id}')" title="Eliminar ítem" aria-label="Eliminar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 6h18"></path>
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    /* ==========================================================================
+       5. INTERACCIÓN DE MODALES & DRAWER
+       ========================================================================== */
+    const cartOverlay = document.getElementById("cartOverlay");
+    const openCartBtn = document.getElementById("openCartBtn");
+    const closeCartBtn = document.getElementById("closeCartBtn");
+
+    function openCart() {
+      cartOverlay.classList.add("open");
+      document.body.style.overflow = "hidden"; // Evita scroll de fondo
+    }
+
+    function closeCart() {
+      cartOverlay.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    openCartBtn.addEventListener("click", openCart);
+    closeCartBtn.addEventListener("click", closeCart);
+
+    // Cerrar al hacer clic en el fondo oscuro
+    cartOverlay.addEventListener("click", (e) => {
+      if (e.target === cartOverlay) {
+        closeCart();
+      }
+    });
+
+    // Cerrar con tecla Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeCart();
+        closeSuccessModal();
+      }
+    });
+
+    // Helper para sugerencias rápidas de lugar
+    function setPlace(placeName) {
+      const input = document.getElementById("deliveryLocation");
+      if (input) {
+        input.value = placeName + " - ";
+        input.focus();
+      }
+    }
+
+    /* ==========================================================================
+       6. INTEGRACIÓN CON WHATSAPP Y VALIDACIÓN DEL FORMULARIO
+       ========================================================================== */
+    const sendWhatsAppBtn = document.getElementById("sendWhatsAppBtn");
+    const successModal = document.getElementById("successModal");
+
+    sendWhatsAppBtn.addEventListener("click", handleOrderSubmission);
+
+    function handleOrderSubmission() {
+      const { totalCount, totalPrice } = calculateTotals();
+
+      if (totalCount === 0) {
+        showToast("Tu carrito está vacío. Agrega productos antes de enviar.");
+        return;
+      }
+
+      const clientNameInput = document.getElementById("clientName");
+      const deliveryLocationInput = document.getElementById("deliveryLocation");
+      const orderNotesInput = document.getElementById("orderNotes");
+
+      const clientName = clientNameInput.value.trim();
+      const deliveryLocation = deliveryLocationInput.value.trim();
+      const orderNotes = orderNotesInput.value.trim() || "Ninguna";
+
+      // Validaciones obligatorias
+      if (!clientName) {
+        clientNameInput.focus();
+        showToast("Por favor, ingresa tu nombre completo.");
+        return;
+      }
+
+      if (!deliveryLocation) {
+        deliveryLocationInput.focus();
+        showToast("Por favor, indica tu lugar de entrega (Pabellón, Aula u Oficina).");
+        return;
+      }
+
+      // Construir la lista de productos para el mensaje
+      let productsListStr = "";
+      const productsSummaryArray = [];
+
+      for (const [id, qty] of Object.entries(cart)) {
+        const product = PRODUCTS.find(p => p.id === id);
+        if (product && qty > 0) {
+          const subtotal = (product.price * qty).toFixed(2);
+          productsListStr += `\n• ${qty}x ${product.name} (S/ ${subtotal})`;
+          productsSummaryArray.push(`${qty}x ${product.name}`);
+        }
+      }
+
+      const totalFormatted = totalPrice.toFixed(2);
+
+      /*
+        Formato requerido:
+        "¡Hola KALLPA ORIGEN! ☀️ Quiero realizar el siguiente pedido: [Lista de productos con cantidades y subtotales]. 📍 Entrega en: [Lugar]. 👤 Cliente: [Nombre]. 📝 Notas: [Comentarios]. 💰 Total a pagar: S/ [Total]. A continuación adjunto mi captura de pago por Yape/Plin."
+      */
+      const whatsappMessage = 
+`¡Hola KALLPA ORIGEN! ☀️ Quiero realizar el siguiente pedido:${productsListStr}
+
+📍 Entrega en: ${deliveryLocation}
+👤 Cliente: ${clientName}
+📝 Notas: ${orderNotes}
+💰 Total a pagar: S/ ${totalFormatted}
+
+A continuación adjunto mi captura de pago por Yape/Plin.`;
+
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodedMessage}`;
+
+      // Mostrar Confirmación Visual (Modal)
+      showSuccessModal({
+        clientName,
+        deliveryLocation,
+        totalFormatted,
+        productsCount: totalCount,
+        whatsappUrl
+      });
+
+      // Redirigir a WhatsApp
+      // Abrir en nueva ventana / pestaña
+      window.open(whatsappUrl, "_blank");
+    }
+
+    function showSuccessModal({ clientName, deliveryLocation, totalFormatted, productsCount, whatsappUrl }) {
+      const summaryBox = document.getElementById("modalSummaryContent");
+      const directLink = document.getElementById("modalDirectLink");
+
+      if (summaryBox) {
+        summaryBox.innerHTML = `
+          <div><strong>👤 Cliente:</strong> ${escapeHtml(clientName)}</div>
+          <div><strong>📍 Entrega:</strong> ${escapeHtml(deliveryLocation)}</div>
+          <div><strong>📦 Ítems:</strong> ${productsCount} productos</div>
+          <div><strong>💰 Total:</strong> S/ ${totalFormatted} (Yape / Plin)</div>
+        `;
+      }
+
+      if (directLink) {
+        directLink.href = whatsappUrl;
+      }
+
+      // Cerrar drawer y abrir modal
+      closeCart();
+      successModal.classList.add("open");
+    }
+
+    function closeSuccessModal() {
+      successModal.classList.remove("open");
+    }
+
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
+
+    /* ==========================================================================
+       7. FILTRADO POR CATEGORÍA
+       ========================================================================== */
+    const tabButtons = document.querySelectorAll(".tab-btn");
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabButtons.forEach(b => {
+          b.classList.remove("active");
+          b.setAttribute("aria-selected", "false");
+        });
+
+        btn.classList.add("active");
+        btn.setAttribute("aria-selected", "true");
+
+        const selectedCat = btn.dataset.category;
+        filterCategory(selectedCat);
+      });
+    });
+
+    function filterCategory(category) {
+      const sections = document.querySelectorAll(".products-section");
+
+      sections.forEach(sec => {
+        const cat = sec.dataset.catSection;
+        if (category === "all" || category === cat) {
+          sec.style.display = "block";
+        } else {
+          sec.style.display = "none";
+        }
+      });
+    }
+
+    /* ==========================================================================
+       8. TOAST NOTIFICACIÓN FLOTANTE
+       ========================================================================== */
+    function showToast(message) {
+      const container = document.getElementById("toastContainer");
+      if (!container) return;
+
+      const toast = document.createElement("div");
+      toast.className = "toast";
+      toast.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <span>${message}</span>
+      `;
+
+      container.appendChild(toast);
+
+      // Trigger de animación
+      requestAnimationFrame(() => {
+        toast.classList.add("show");
+      });
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => {
+          if (toast.parentNode) {
+            toast.parentNode.removeChild(toast);
+          }
+        }, 300);
+      }, 3000);
+    }
+
+    /* ==========================================================================
+       9. INICIALIZACIÓN
+       ========================================================================== */
+    document.addEventListener("DOMContentLoaded", () => {
+      // Poner año actual en el pie de página
+      const yearSpan = document.getElementById("currentYear");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+
+      renderCatalog();
+      updateCartUI();
+    });
+  </script>
+</body>
+</html>
